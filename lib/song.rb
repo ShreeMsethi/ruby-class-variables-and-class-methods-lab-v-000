@@ -25,17 +25,30 @@ class Song
     @@genres.to_set
   end
   
+  # def self.genre_count
+  #   @@genres_count = {}
+  #   @@genres.each do |item|  
+  #     if @@genres_count[item] 
+  #       @@genres_count[item] += 1
+  #     else 
+  #       @@genres_count[item] = 1
+  #     end
+  #   end  
+  #   @@genres_count
+  # end 
+  
+  #Both method - one on top and one at bottom are right
+ 
   def self.genre_count
-    @@genres_count = {}
-    @@genres.each do |item|  
-      if @@genres_count[item] 
-        @@genres_count[item] += 1
-      else 
-        @@genres_count[item] = 1
+    @@genres.inject(Hash.new(0)) do |genre_count, e|
+      if @@genre_count[e]
+        @@genre_count[e] += 1
+      else
+        @@genre_count[e] = 1
       end
-    end  
-    @@genres_count
-  end  
+    end
+    @@genre_count
+  end
   
   def self.artists
     @@artists.to_set
